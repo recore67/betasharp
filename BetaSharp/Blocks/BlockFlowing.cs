@@ -16,7 +16,7 @@ public class BlockFlowing : BlockFluid
     private void convertToSource(World world, int x, int y, int z)
     {
         int meta = world.getBlockMeta(x, y, z);
-        world.setBlockWithoutNotifyingNeighbors(x, y, z, id + 1, meta);
+        world.SetBlockWithoutNotifyingNeighbors(x, y, z, id + 1, meta);
         world.setBlocksDirty(x, y, z, x, y, z);
         world.blockUpdateEvent(x, y, z);
     }
@@ -25,7 +25,7 @@ public class BlockFlowing : BlockFluid
     {
         int currentState = getLiquidState(world, x, y, z);
         sbyte spreadRate = 1;
-        if (material == Material.LAVA && !world.dimension.evaporatesWater)
+        if (material == Material.Lava && !world.dimension.evaporatesWater)
         {
             spreadRate = 2;
         }
@@ -59,9 +59,9 @@ public class BlockFlowing : BlockFluid
                 }
             }
 
-            if (adjacentSources >= 2 && material == Material.WATER)
+            if (adjacentSources >= 2 && material == Material.Water)
             {
-                if (world.getMaterial(x, y - 1, z).isSolid())
+                if (world.getMaterial(x, y - 1, z).IsSolid)
                 {
                     newLevel = 0;
                 }
@@ -71,7 +71,7 @@ public class BlockFlowing : BlockFluid
                 }
             }
 
-            if (material == Material.LAVA && currentState < 8 && newLevel < 8 && newLevel > currentState && random.nextInt(4) != 0)
+            if (material == Material.Lava && currentState < 8 && newLevel < 8 && newLevel > currentState && random.nextInt(4) != 0)
             {
                 newLevel = currentState;
                 convertToSource = false;
@@ -87,7 +87,7 @@ public class BlockFlowing : BlockFluid
                 else
                 {
                     world.setBlockMeta(x, y, z, newLevel);
-                    world.scheduleBlockUpdate(x, y, z, id, getTickRate());
+                    world.ScheduleBlockUpdate(x, y, z, id, getTickRate());
                     world.notifyNeighbors(x, y, z, id);
                 }
             }
@@ -156,13 +156,13 @@ public class BlockFlowing : BlockFluid
             int blockId = world.getBlockId(x, y, z);
             if (blockId > 0)
             {
-                if (material == Material.LAVA)
+                if (material == Material.Lava)
                 {
                     fizz(world, x, y, z);
                 }
                 else
                 {
-                    Block.BLOCKS[blockId].dropStacks(world, x, y, z, world.getBlockMeta(x, y, z));
+                    Block.Blocks[blockId].dropStacks(world, x, y, z, world.getBlockMeta(x, y, z));
                 }
             }
 
@@ -286,7 +286,7 @@ public class BlockFlowing : BlockFluid
     private bool isLiquidBreaking(World world, int x, int y, int z)
     {
         int blockId = world.getBlockId(x, y, z);
-        if (blockId != Block.DOOR.id && blockId != Block.IRON_DOOR.id && blockId != Block.SIGN.id && blockId != Block.LADDER.id && blockId != Block.SUGAR_CANE.id)
+        if (blockId != Block.Door.id && blockId != Block.IronDoor.id && blockId != Block.Sign.id && blockId != Block.Ladder.id && blockId != Block.SugarCane.id)
         {
             if (blockId == 0)
             {
@@ -294,8 +294,8 @@ public class BlockFlowing : BlockFluid
             }
             else
             {
-                Material material = Block.BLOCKS[blockId].material;
-                return material.blocksMovement();
+                Material material = Block.Blocks[blockId].material;
+                return material.BlocksMovement;
             }
         }
         else
@@ -330,7 +330,7 @@ public class BlockFlowing : BlockFluid
     private bool canSpreadTo(World world, int x, int y, int z)
     {
         Material material = world.getMaterial(x, y, z);
-        return material == base.material ? false : (material == Material.LAVA ? false : !isLiquidBreaking(world, x, y, z));
+        return material == base.material ? false : (material == Material.Lava ? false : !isLiquidBreaking(world, x, y, z));
     }
 
     public override void onPlaced(World world, int x, int y, int z)
@@ -338,7 +338,7 @@ public class BlockFlowing : BlockFluid
         base.onPlaced(world, x, y, z);
         if (world.getBlockId(x, y, z) == id)
         {
-            world.scheduleBlockUpdate(x, y, z, id, getTickRate());
+            world.ScheduleBlockUpdate(x, y, z, id, getTickRate());
         }
 
     }

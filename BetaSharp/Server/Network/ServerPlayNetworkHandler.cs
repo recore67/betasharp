@@ -270,7 +270,7 @@ public class ServerPlayNetworkHandler : NetHandler, CommandOutput
         }
         else
         {
-            bool var3 = var2.bypassSpawnProtection = var2.dimension.id != 0 || server.playerManager.isOperator(player.name);
+            bool var3 = var2.bypassSpawnProtection = var2.dimension.id != 0 || server.playerManager.isOperator(player.name) || server is InternalServer;
             bool var4 = false;
             if (packet.action == 0)
             {
@@ -344,7 +344,7 @@ public class ServerPlayNetworkHandler : NetHandler, CommandOutput
     {
         ServerWorld var2 = server.getWorld(player.dimensionId);
         ItemStack var3 = player.inventory.getSelectedItem();
-        bool var4 = var2.bypassSpawnProtection = var2.dimension.id != 0 || server.playerManager.isOperator(player.name);
+        bool var4 = var2.bypassSpawnProtection = var2.dimension.id != 0 || server.playerManager.isOperator(player.name) || server is InternalServer;
         if (packet.side == 255)
         {
             if (var3 == null)
@@ -471,6 +471,12 @@ public class ServerPlayNetworkHandler : NetHandler, CommandOutput
 
             for (int var3 = 0; var3 < var2.Length; var3++)
             {
+                // Allow the section sign (§) for color/style codes as well as the standard allowed characters
+                if (var2[var3] == (char)167) // '§'
+                {
+                    continue;
+                }
+
                 if (ChatAllowedCharacters.allowedCharacters.IndexOf(var2[var3]) < 0)
                 {
                     disconnect("Illegal characters in chat");

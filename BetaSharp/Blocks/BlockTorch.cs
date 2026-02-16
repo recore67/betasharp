@@ -8,7 +8,7 @@ namespace BetaSharp.Blocks;
 public class BlockTorch : Block
 {
 
-    public BlockTorch(int id, int textureId) : base(id, textureId, Material.PISTON_BREAKABLE)
+    public BlockTorch(int id, int textureId) : base(id, textureId, Material.PistonBreakable)
     {
         setTickRandomly(true);
     }
@@ -35,7 +35,7 @@ public class BlockTorch : Block
 
     private bool canPlaceOn(World world, int x, int y, int z)
     {
-        return world.shouldSuffocate(x, y, z) || world.getBlockId(x, y, z) == Block.FENCE.id;
+        return world.shouldSuffocate(x, y, z) || world.getBlockId(x, y, z) == Block.Fence.id;
     }
 
     public override bool canPlaceAt(World world, int x, int y, int z)

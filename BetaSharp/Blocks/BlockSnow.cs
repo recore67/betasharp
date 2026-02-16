@@ -9,7 +9,7 @@ namespace BetaSharp.Blocks;
 public class BlockSnow : Block
 {
 
-    public BlockSnow(int id, int textureId) : base(id, textureId, Material.SNOW_LAYER)
+    public BlockSnow(int id, int textureId) : base(id, textureId, Material.SnowLayer)
     {
         setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 2.0F / 16.0F, 1.0F);
         setTickRandomly(true);
@@ -43,7 +43,7 @@ public class BlockSnow : Block
     public override bool canPlaceAt(World world, int x, int y, int z)
     {
         int blockBelowId = world.getBlockId(x, y - 1, z);
-        return blockBelowId != 0 && Block.BLOCKS[blockBelowId].isOpaque() ? world.getMaterial(x, y - 1, z).blocksMovement() : false;
+        return blockBelowId != 0 && Block.Blocks[blockBelowId].isOpaque() ? world.getMaterial(x, y - 1, z).BlocksMovement : false;
     }
 
     public override void neighborUpdate(World world, int x, int y, int z, int id)
@@ -74,7 +74,7 @@ public class BlockSnow : Block
         double offsetZ = (double)(world.random.nextFloat() * spreadFactor) + (double)(1.0F - spreadFactor) * 0.5D;
         EntityItem entityItem = new EntityItem(world, (double)x + offsetX, (double)y + offsetY, (double)z + offsetZ, new ItemStack(snowballId, 1, 0));
         entityItem.delayBeforeCanPickup = 10;
-        world.spawnEntity(entityItem);
+        world.SpawnEntity(entityItem);
         world.setBlock(x, y, z, 0);
         player.increaseStat(Stats.Stats.mineBlockStatArray[id], 1);
     }

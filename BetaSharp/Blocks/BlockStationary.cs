@@ -8,7 +8,7 @@ public class BlockStationary : BlockFluid
     public BlockStationary(int id, Material material) : base(id, material)
     {
         setTickRandomly(false);
-        if (material == Material.LAVA)
+        if (material == Material.Lava)
         {
             setTickRandomly(true);
         }
@@ -29,15 +29,15 @@ public class BlockStationary : BlockFluid
     {
         int meta = world.getBlockMeta(x, y, z);
         world.pauseTicking = true;
-        world.setBlockWithoutNotifyingNeighbors(x, y, z, id - 1, meta);
+        world.SetBlockWithoutNotifyingNeighbors(x, y, z, id - 1, meta);
         world.setBlocksDirty(x, y, z, x, y, z);
-        world.scheduleBlockUpdate(x, y, z, id - 1, getTickRate());
+        world.ScheduleBlockUpdate(x, y, z, id - 1, getTickRate());
         world.pauseTicking = false;
     }
 
     public override void onTick(World world, int x, int y, int z, java.util.Random random)
     {
-        if (material == Material.LAVA)
+        if (material == Material.Lava)
         {
             int attempts = random.nextInt(3);
 
@@ -51,11 +51,11 @@ public class BlockStationary : BlockFluid
                 {
                     if (isFlammable(world, x - 1, y, z) || isFlammable(world, x + 1, y, z) || isFlammable(world, x, y, z - 1) || isFlammable(world, x, y, z + 1) || isFlammable(world, x, y - 1, z) || isFlammable(world, x, y + 1, z))
                     {
-                        world.setBlock(x, y, z, Block.FIRE.id);
+                        world.setBlock(x, y, z, Block.Fire.id);
                         return;
                     }
                 }
-                else if (Block.BLOCKS[neighborBlockId].material.blocksMovement())
+                else if (Block.Blocks[neighborBlockId].material.BlocksMovement)
                 {
                     return;
                 }
@@ -66,6 +66,6 @@ public class BlockStationary : BlockFluid
 
     private bool isFlammable(World world, int x, int y, int z)
     {
-        return world.getMaterial(x, y, z).isBurnable();
+        return world.getMaterial(x, y, z).IsBurnable;
     }
 }

@@ -311,7 +311,7 @@ public class EntityFish : Entity
                     double var14 = boundingBox.minY + (boundingBox.maxY - boundingBox.minY) * (double)(var28 + 0) / (double)var26 - 0.125D + 0.125D;
                     double var16 = boundingBox.minY + (boundingBox.maxY - boundingBox.minY) * (double)(var28 + 1) / (double)var26 - 0.125D + 0.125D;
                     Box var18 = new Box(boundingBox.minX, var14, boundingBox.minZ, boundingBox.maxX, var16, boundingBox.maxZ);
-                    if (world.isFluidInBox(var18, Material.WATER))
+                    if (world.isFluidInBox(var18, Material.Water))
                     {
                         var27 += 1.0D / (double)var26;
                     }
@@ -430,7 +430,7 @@ public class EntityFish : Entity
             var13.velocityX = var3 * var11;
             var13.velocityY = var5 * var11 + (double)MathHelper.sqrt_double(var9) * 0.08D;
             var13.velocityZ = var7 * var11;
-            world.spawnEntity(var13);
+            world.SpawnEntity(var13);
             angler.increaseStat(Stats.Stats.fishCaughtStat, 1);
             var1 = 1;
         }

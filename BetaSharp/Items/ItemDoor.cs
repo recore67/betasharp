@@ -27,13 +27,13 @@ public class ItemDoor : Item
         {
             ++y;
             Block block;
-            if (doorMaterial == Material.WOOD)
+            if (doorMaterial == Material.Wood)
             {
-                block = Block.DOOR;
+                block = Block.Door;
             }
             else
             {
-                block = Block.IRON_DOOR;
+                block = Block.IronDoor;
             }
 
             if (!block.canPlaceAt(world, x, y, z))

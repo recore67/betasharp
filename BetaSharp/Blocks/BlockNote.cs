@@ -7,7 +7,7 @@ namespace BetaSharp.Blocks;
 
 public class BlockNote : BlockWithEntity
 {
-    public BlockNote(int id) : base(id, 74, Material.WOOD)
+    public BlockNote(int id) : base(id, 74, Material.Wood)
     {
     }
 
@@ -18,7 +18,7 @@ public class BlockNote : BlockWithEntity
 
     public override void neighborUpdate(World world, int x, int y, int z, int id)
     {
-        if (id > 0 && Block.BLOCKS[id].canEmitRedstonePower())
+        if (id > 0 && Block.Blocks[id].canEmitRedstonePower())
         {
             bool isPowered = world.isStrongPowered(x, y, z);
             BlockEntityNote blockEntity = (BlockEntityNote)world.getBlockEntity(x, y, z);

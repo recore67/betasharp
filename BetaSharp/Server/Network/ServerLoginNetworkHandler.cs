@@ -31,6 +31,14 @@ public class ServerLoginNetworkHandler : NetHandler
         connection.lag = 0;
     }
 
+    public ServerLoginNetworkHandler(MinecraftServer server, Connection connection)
+    {
+        this.server = server;
+        this.connection = connection;
+        connection.setNetworkHandler(this);
+        connection.lag = 0;
+    }
+
     public void tick()
     {
         if (loginPacket != null)
@@ -83,6 +91,11 @@ public class ServerLoginNetworkHandler : NetHandler
         {
             packet.username = "player";
         }
+        if (packet.worldSeed == LoginHelloPacket.BETASHARP_CLIENT_SIGNATURE)
+        {
+            // This is a BetaSharp client. We can use this for future protocol extensions.
+        }
+
         username = packet.username;
         if (packet.protocolVersion != 14)
         {
@@ -148,6 +161,7 @@ public class ServerLoginNetworkHandler : NetHandler
 
     public string getConnectionInfo()
     {
+        if (connection.getAddress() == null) return "Internal";
         return username != null ? username + " [" + connection.getAddress().toString() + "]" : connection.getAddress().toString();
     }
 

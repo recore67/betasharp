@@ -7,7 +7,7 @@ namespace BetaSharp.Blocks;
 
 public class BlockButton : Block
 {
-    public BlockButton(int id, int textureId) : base(id, textureId, Material.PISTON_BREAKABLE)
+    public BlockButton(int id, int textureId) : base(id, textureId, Material.PistonBreakable)
     {
         setTickRandomly(true);
     }
@@ -199,7 +199,7 @@ public class BlockButton : Block
                 world.notifyNeighbors(x, y - 1, z, id);
             }
 
-            world.scheduleBlockUpdate(x, y, z, id, getTickRate());
+            world.ScheduleBlockUpdate(x, y, z, id, getTickRate());
             return true;
         }
     }

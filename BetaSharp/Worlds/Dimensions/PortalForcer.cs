@@ -38,9 +38,9 @@ public class PortalForcer
 
                 for (int var17 = 127; var17 >= 0; --var17)
                 {
-                    if (world.getBlockId(var11, var17, var14) == Block.NETHER_PORTAL.id)
+                    if (world.getBlockId(var11, var17, var14) == Block.NetherPortal.id)
                     {
-                        while (world.getBlockId(var11, var17 - 1, var14) == Block.NETHER_PORTAL.id)
+                        while (world.getBlockId(var11, var17 - 1, var14) == Block.NetherPortal.id)
                         {
                             --var17;
                         }
@@ -64,22 +64,22 @@ public class PortalForcer
             double var22 = var6 + 0.5D;
             double var16 = var7 + 0.5D;
             var18 = var8 + 0.5D;
-            if (world.getBlockId(var6 - 1, var7, var8) == Block.NETHER_PORTAL.id)
+            if (world.getBlockId(var6 - 1, var7, var8) == Block.NetherPortal.id)
             {
                 var22 -= 0.5D;
             }
 
-            if (world.getBlockId(var6 + 1, var7, var8) == Block.NETHER_PORTAL.id)
+            if (world.getBlockId(var6 + 1, var7, var8) == Block.NetherPortal.id)
             {
                 var22 += 0.5D;
             }
 
-            if (world.getBlockId(var6, var7, var8 - 1) == Block.NETHER_PORTAL.id)
+            if (world.getBlockId(var6, var7, var8 - 1) == Block.NetherPortal.id)
             {
                 var18 -= 0.5D;
             }
 
-            if (world.getBlockId(var6, var7, var8 + 1) == Block.NETHER_PORTAL.id)
+            if (world.getBlockId(var6, var7, var8 + 1) == Block.NetherPortal.id)
             {
                 var18 += 0.5D;
             }
@@ -159,7 +159,7 @@ public class PortalForcer
                                         var27 = var14 + (var25 - 1) * var22 + var24 * var23;
                                         var28 = var20 + var26;
                                         int var29 = var17 + (var25 - 1) * var23 - var24 * var22;
-                                        if (var26 < 0 && !world.getMaterial(var27, var28, var29).isSolid() || var26 >= 0 && !world.isAir(var27, var28, var29))
+                                        if (var26 < 0 && !world.getMaterial(var27, var28, var29).IsSolid || var26 >= 0 && !world.isAir(var27, var28, var29))
                                         {
                                             validLocation = false;
                                         }
@@ -218,7 +218,7 @@ public class PortalForcer
                                         var26 = var14 + (var24 - 1) * var22;
                                         var27 = var20 + var25;
                                         var28 = var17 + (var24 - 1) * var23;
-                                        if (var25 < 0 && !world.getMaterial(var26, var27, var28).isSolid() || var25 >= 0 && !world.isAir(var26, var27, var28))
+                                        if (var25 < 0 && !world.getMaterial(var26, var27, var28).IsSolid || var25 >= 0 && !world.isAir(var26, var27, var28))
                                         {
                                             validLocation = false;
                                         }
@@ -281,7 +281,7 @@ public class PortalForcer
                         var24 = var16 + var22;
                         var25 = var17 + (var21 - 1) * var19 - var20 * var31;
                         var34 = var22 < 0;
-                        world.setBlock(var23, var24, var25, var34 ? Block.OBSIDIAN.id : 0);
+                        world.setBlock(var23, var24, var25, var34 ? Block.Obsidian.id : 0);
                     }
                 }
             }
@@ -299,7 +299,7 @@ public class PortalForcer
                     var24 = var16 + var22;
                     var25 = var17 + (var21 - 1) * var19;
                     var34 = var21 == 0 || var21 == 3 || var22 == -1 || var22 == 3;
-                    world.setBlock(var23, var24, var25, var34 ? Block.OBSIDIAN.id : Block.NETHER_PORTAL.id);
+                    world.setBlock(var23, var24, var25, var34 ? Block.Obsidian.id : Block.NetherPortal.id);
                 }
             }
 

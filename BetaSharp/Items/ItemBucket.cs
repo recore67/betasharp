@@ -54,13 +54,13 @@ public class ItemBucket : Item
 
                 if (isFull == 0)
                 {
-                    if (world.getMaterial(hitX, hitY, hitZ) == Material.WATER && world.getBlockMeta(hitX, hitY, hitZ) == 0)
+                    if (world.getMaterial(hitX, hitY, hitZ) == Material.Water && world.getBlockMeta(hitX, hitY, hitZ) == 0)
                     {
                         world.setBlock(hitX, hitY, hitZ, 0);
                         return new ItemStack(Item.WATER_BUCKET);
                     }
 
-                    if (world.getMaterial(hitX, hitY, hitZ) == Material.LAVA && world.getBlockMeta(hitX, hitY, hitZ) == 0)
+                    if (world.getMaterial(hitX, hitY, hitZ) == Material.Lava && world.getBlockMeta(hitX, hitY, hitZ) == 0)
                     {
                         world.setBlock(hitX, hitY, hitZ, 0);
                         return new ItemStack(Item.LAVA_BUCKET);
@@ -103,9 +103,9 @@ public class ItemBucket : Item
                         ++hitX;
                     }
 
-                    if (world.isAir(hitX, hitY, hitZ) || !world.getMaterial(hitX, hitY, hitZ).isSolid())
+                    if (world.isAir(hitX, hitY, hitZ) || !world.getMaterial(hitX, hitY, hitZ).IsSolid)
                     {
-                        if (world.dimension.evaporatesWater && isFull == Block.FLOWING_WATER.id)
+                        if (world.dimension.evaporatesWater && isFull == Block.FlowingWater.id)
                         {
                             world.playSound(x + 0.5D, y + 0.5D, z + 0.5D, "random.fizz", 0.5F, 2.6F + (world.random.nextFloat() - world.random.nextFloat()) * 0.8F);
 

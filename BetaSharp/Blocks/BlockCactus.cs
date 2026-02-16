@@ -8,7 +8,7 @@ namespace BetaSharp.Blocks;
 public class BlockCactus : Block
 {
 
-    public BlockCactus(int id, int textureId) : base(id, textureId, Material.CACTUS)
+    public BlockCactus(int id, int textureId) : base(id, textureId, Material.Cactus)
     {
         setTickRandomly(true);
     }
@@ -88,26 +88,26 @@ public class BlockCactus : Block
 
     public override bool canGrow(World world, int x, int y, int z)
     {
-        if (world.getMaterial(x - 1, y, z).isSolid())
+        if (world.getMaterial(x - 1, y, z).IsSolid)
         {
             return false;
         }
-        else if (world.getMaterial(x + 1, y, z).isSolid())
+        else if (world.getMaterial(x + 1, y, z).IsSolid)
         {
             return false;
         }
-        else if (world.getMaterial(x, y, z - 1).isSolid())
+        else if (world.getMaterial(x, y, z - 1).IsSolid)
         {
             return false;
         }
-        else if (world.getMaterial(x, y, z + 1).isSolid())
+        else if (world.getMaterial(x, y, z + 1).IsSolid)
         {
             return false;
         }
         else
         {
             int blockBelowId = world.getBlockId(x, y - 1, z);
-            return blockBelowId == Block.CACTUS.id || blockBelowId == Block.SAND.id;
+            return blockBelowId == Block.Cactus.id || blockBelowId == Block.Sand.id;
         }
     }
 

@@ -1,6 +1,6 @@
-using BetaSharp.Client.Colors;
-using BetaSharp.Items;
+﻿using BetaSharp.Items;
 using BetaSharp.Worlds;
+using BetaSharp.Worlds.Colors;
 
 namespace BetaSharp.Blocks;
 
@@ -22,7 +22,7 @@ public class BlockTallGrass : BlockPlant
         int meta = blockView.getBlockMeta(x, y, z);
         if (meta == 0)
         {
-            return 16777215;
+            return 0x00FFFFFF;
         }
         else
         {
@@ -31,9 +31,9 @@ public class BlockTallGrass : BlockPlant
             x = (int)((long)x + (positionSeed >> 14 & 31L));
             y = (int)((long)y + (positionSeed >> 19 & 31L));
             z = (int)((long)z + (positionSeed >> 24 & 31L));
-            blockView.getBiomeSource().getBiomesInArea(x, z, 1, 1);
-            double temperature = blockView.getBiomeSource().temperatureMap[0];
-            double downfall = blockView.getBiomeSource().downfallMap[0];
+            blockView.getBiomeSource().GetBiomesInArea(x, z, 1, 1);
+            double temperature = blockView.getBiomeSource().TemperatureMap[0];
+            double downfall = blockView.getBiomeSource().DownfallMap[0];
             return GrassColors.getColor(temperature, downfall);
         }
     }

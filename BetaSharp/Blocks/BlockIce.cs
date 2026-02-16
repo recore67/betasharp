@@ -7,7 +7,7 @@ namespace BetaSharp.Blocks;
 public class BlockIce : BlockBreakable
 {
 
-    public BlockIce(int id, int textureId) : base(id, textureId, Material.ICE, false)
+    public BlockIce(int id, int textureId) : base(id, textureId, Material.Ice, false)
     {
         slipperiness = 0.98F;
         setTickRandomly(true);
@@ -27,9 +27,9 @@ public class BlockIce : BlockBreakable
     {
         base.afterBreak(world, player, x, y, z, meta);
         Material materialBelow = world.getMaterial(x, y - 1, z);
-        if (materialBelow.blocksMovement() || materialBelow.isFluid())
+        if (materialBelow.BlocksMovement || materialBelow.IsFluid)
         {
-            world.setBlock(x, y, z, Block.FLOWING_WATER.id);
+            world.setBlock(x, y, z, Block.FlowingWater.id);
         }
 
     }
@@ -41,10 +41,10 @@ public class BlockIce : BlockBreakable
 
     public override void onTick(World world, int x, int y, int z, java.util.Random random)
     {
-        if (world.getBrightness(LightType.Block, x, y, z) > 11 - Block.BLOCK_LIGHT_OPACITY[id])
+        if (world.getBrightness(LightType.Block, x, y, z) > 11 - Block.BlockLightOpacity[id])
         {
             dropStacks(world, x, y, z, world.getBlockMeta(x, y, z));
-            world.setBlock(x, y, z, Block.WATER.id);
+            world.setBlock(x, y, z, Block.Water.id);
         }
 
     }

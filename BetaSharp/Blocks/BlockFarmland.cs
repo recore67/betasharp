@@ -8,7 +8,7 @@ namespace BetaSharp.Blocks;
 public class BlockFarmland : Block
 {
 
-    public BlockFarmland(int id) : base(id, Material.SOIL)
+    public BlockFarmland(int id) : base(id, Material.Soil)
     {
         textureId = 87;
         setTickRandomly(true);
@@ -49,7 +49,7 @@ public class BlockFarmland : Block
                 }
                 else if (!hasCrop(world, x, y, z))
                 {
-                    world.setBlock(x, y, z, Block.DIRT.id);
+                    world.setBlock(x, y, z, Block.Dirt.id);
                 }
             }
             else
@@ -64,7 +64,7 @@ public class BlockFarmland : Block
     {
         if (world.random.nextInt(4) == 0)
         {
-            world.setBlock(x, y, z, Block.DIRT.id);
+            world.setBlock(x, y, z, Block.Dirt.id);
         }
 
     }
@@ -77,7 +77,7 @@ public class BlockFarmland : Block
         {
             for (int var7 = z - cropRadius; var7 <= z + cropRadius; ++var7)
             {
-                if (world.getBlockId(var6, y + 1, var7) == Block.WHEAT.id)
+                if (world.getBlockId(var6, y + 1, var7) == Block.Wheat.id)
                 {
                     return true;
                 }
@@ -95,7 +95,7 @@ public class BlockFarmland : Block
             {
                 for (int checkZ = z - 4; checkZ <= z + 4; ++checkZ)
                 {
-                    if (world.getMaterial(checkX, checkY, checkZ) == Material.WATER)
+                    if (world.getMaterial(checkX, checkY, checkZ) == Material.Water)
                     {
                         return true;
                     }
@@ -110,15 +110,15 @@ public class BlockFarmland : Block
     {
         base.neighborUpdate(world, x, y, z, id);
         Material material = world.getMaterial(x, y + 1, z);
-        if (material.isSolid())
+        if (material.IsSolid)
         {
-            world.setBlock(x, y, z, Block.DIRT.id);
+            world.setBlock(x, y, z, Block.Dirt.id);
         }
 
     }
 
     public override int getDroppedItemId(int blockMeta, java.util.Random random)
     {
-        return Block.DIRT.getDroppedItemId(0, random);
+        return Block.Dirt.getDroppedItemId(0, random);
     }
 }

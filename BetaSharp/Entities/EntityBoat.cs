@@ -93,7 +93,7 @@ public class EntityBoat : Entity
                 int i;
                 for (i = 0; i < 3; ++i)
                 {
-                    dropItem(Block.PLANKS.id, 1, 0.0F);
+                    dropItem(Block.Planks.id, 1, 0.0F);
                 }
 
                 for (i = 0; i < 2; ++i)
@@ -168,7 +168,7 @@ public class EntityBoat : Entity
             double var5 = boundingBox.minY + (boundingBox.maxY - boundingBox.minY) * (double)(i + 0) / (double)var1 - 0.125D;
             double var7 = boundingBox.minY + (boundingBox.maxY - boundingBox.minY) * (double)(i + 1) / (double)var1 - 0.125D;
             Box var9 = new Box(boundingBox.minX, var5, boundingBox.minZ, boundingBox.maxX, var7, boundingBox.maxZ);
-            if (world.isFluidInBox(var9, Material.WATER))
+            if (world.isFluidInBox(var9, Material.Water))
             {
                 var2 += 1.0D / (double)var1;
             }
@@ -308,7 +308,7 @@ public class EntityBoat : Entity
                     int j;
                     for (j = 0; j < 3; ++j)
                     {
-                        dropItem(Block.PLANKS.id, 1, 0.0F);
+                        dropItem(Block.Planks.id, 1, 0.0F);
                     }
 
                     for (j = 0; j < 2; ++j)
@@ -374,7 +374,7 @@ public class EntityBoat : Entity
                 int x = MathHelper.floor_double(base.x + ((double)(i % 2) - 0.5D) * 0.8D);
                 int y = MathHelper.floor_double(base.y);
                 int z = MathHelper.floor_double(base.z + ((double)(i / 2) - 0.5D) * 0.8D);
-                if (world.getBlockId(x, y, z) == Block.SNOW.id)
+                if (world.getBlockId(x, y, z) == Block.Snow.id)
                 {
                     world.setBlock(x, y, z, 0);
                 }
